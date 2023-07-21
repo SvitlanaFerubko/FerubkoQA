@@ -20,9 +20,8 @@ class GitHub:
     def get_emojis(self, version):
         print(version)
         r = requests.get(f'https://api.github.com/emojis', headers={"X-GitHub-Api-Version":version})
-        body = r.json()
 
-        return body
+        return r
 
 
     def list_commit(self, owner, repo):
