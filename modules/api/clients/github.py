@@ -1,5 +1,6 @@
 import requests
 
+
 class GitHub:
 
     def get_user(self, username):
@@ -12,6 +13,20 @@ class GitHub:
         r = requests.get(
             "https://api.github.com/search/repositories",
             params={"q": name})
+        body = r.json()
+
+        return body
+
+    def get_emojis(self, version):
+        print(version)
+        r = requests.get(f'https://api.github.com/emojis', headers={"X-GitHub-Api-Version":version})
+        body = r.json()
+
+        return body
+
+
+    def list_commit(self, owner, repo):
+        r = requests.get(f"https://api.github.com/repos/{owner}/{repo}/commits")
         body = r.json()
 
         return body
